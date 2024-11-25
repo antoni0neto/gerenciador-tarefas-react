@@ -30,7 +30,7 @@ function AddTask({ onAddTaskSubmit }) {
           setTitle("");
           setDescription("");
         }}
-        className="bg-slate-500 text-white px-4 py-2 rounded-md font-medium"
+        className="bg-slate-700 text-white px-4 py-2 rounded-md font-medium hover:bg-slate-900"
       >
         Adicionar
       </button>

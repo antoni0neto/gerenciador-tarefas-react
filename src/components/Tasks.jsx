@@ -7,8 +7,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
 
   function onSeeDetailsClick(task) {
     const query = new URLSearchParams();
-    query.set("title", task.title);
-    query.set("description", task.description);
+    query.set("id", task.id);
     navigate(`/task?${query.toString()}`);
   }
 
@@ -18,17 +17,23 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
         <li className="flex gap-2" key={task.id}>
           <button
             onClick={() => onTaskClick(task.id)}
-            className={`bg-slate-400 text-left text-white p-2 rounded-md w-full flex gap-2 ${
+            className={`bg-slate-400 text-left text-white p-2 rounded-md w-full flex gap-2 hover:text-slate-800 ${
               task.isCompleted && "line-through"
             }`}
           >
             {task.isCompleted && <CheckIcon />}
             {task.title}
           </button>
-          <Button onClick={() => onSeeDetailsClick(task)}>
+          <Button
+            className="hover:text-slate-800 text-white bg-slate-400 p-2 rounded-md"
+            onClick={() => onSeeDetailsClick(task)}
+          >
             <ChevronRightIcon />
           </Button>
-          <Button onClick={() => onDeleteTaskClick(task.id)}>
+          <Button
+            className="hover:text-slate-800 text-white bg-slate-400 p-2 rounded-md"
+            onClick={() => onDeleteTaskClick(task.id)}
+          >
             <TrashIcon />
           </Button>
         </li>

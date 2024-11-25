@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
 import { v4 } from "uuid";
 import Title from "./components/Title";
+import { useContext } from "react";
+import { TasksContext } from "./context/TasksContext";
 
 const App = () => {
-  const [tasks, setTasks] = useState(
-    JSON.parse(localStorage.getItem("tasks")) || []
-  );
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
+  const { tasks, setTasks } = useContext(TasksContext);
 
   // Criando tarefas com API
   // useEffect(() => {
