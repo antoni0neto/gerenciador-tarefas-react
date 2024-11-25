@@ -42,8 +42,8 @@ const App = () => {
   function onAddTaskSubmit(title, description) {
     const newTask = {
       id: v4(),
-      title: title,
-      description: description,
+      title: title.trim(),
+      description: description.trim(),
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);

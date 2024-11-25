@@ -16,19 +16,21 @@ function TaskPage() {
   const [updatedTask, SetUpdatedTask] = useState(false);
 
   useEffect(() => {
-    console.log(tasks);
     const task = tasks.find((task) => task.id === id);
     if (task) {
       setTitle(task.title);
       setDescription(task.description);
     }
-    console.log(task);
   }, [tasks, id]);
 
   function onEditTaskClick(newTitle, newDescription) {
     const updatedTasks = tasks.map((task) => {
       if (task.id === id) {
-        return { ...task, title: newTitle, description: newDescription };
+        return {
+          ...task,
+          title: newTitle.trim(),
+          description: newDescription.trim(),
+        };
       }
       return task;
     });
